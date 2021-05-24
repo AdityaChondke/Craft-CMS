@@ -2,7 +2,7 @@ FROM centos
 
 ENV php_conf='/etc/php.ini'
 
-RUN yum install -y ngnix httpd php php-pdo php-common php-mcrypt php-mbstring  php-mysql php-gd php-curl elinks mariadb \
+RUN yum install -y ngnix httpd php php-pdo php-common php-mcrypt php-mbstring  php-mysqlnd php-gd php-curl elinks mariadb \
     && systemctl enable nginx \
     && systemctl enable mariadb \
     && echo "<?php phpinfo() ?>" > /usr/share/nginx/html/info.php
