@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:8.1
+FROM centos
 
 ENV php_conf='/etc/php.ini'
 
@@ -14,7 +14,7 @@ RUN sed -i '$ a extension=mysql.so' $php_conf \
 WORKDIR /var/www/html/
 
 RUN wget https://download.craftcdn.com/craft/2.6/2.6.2993/Craft-2.6.2993.zip \
-    && unzip Craft-2.6.2993.zip \
+    && unzip Craft-2.6.2993.zip
 
 WORKDIR /var/www/html/craft/config
 
@@ -29,7 +29,7 @@ RUN sed -i -e 's/ server/ localhost/g' db.php \
     && sed -i -e 's/ tableprfix/ craft/g' db.php
 
 WORKDIR /var/www/html/public 
-mv htaccess .htaccess
+RUN mv htaccess .htaccess
 
 
 
